@@ -21,3 +21,9 @@ Install Node.js
 * Download node.js Lst version
 * Install and follow instructions
 
+Unit Test
+---------
+
+* Install Karma
+    * `npm i -g karma jasmine-core`
+
