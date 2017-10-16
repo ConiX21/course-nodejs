@@ -1,7 +1,8 @@
 Node.js course
 ==============
 
-##Summary order
+Summary order
+-------------
 
 * event loop
 * modules
