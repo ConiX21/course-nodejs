@@ -15,3 +15,9 @@ Summary order
 10. mysql
 11. sequalize
 12. test
+
+Install Node.js
+-------------
+* Download node.js Lst version
+* Install and follow instructions
+
