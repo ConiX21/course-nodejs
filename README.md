@@ -24,6 +24,10 @@ Install Node.js
 Unit Test
 ---------
 
-* Install Karma
-    * `npm i -g karma jasmine-core`
+* Install Karma and Jasmine
+`npm i -g karma karma-cli jasmine-core`
+* Install gulp
+`npm i -g gulp`
+`npm i gulp --save`
+
 
