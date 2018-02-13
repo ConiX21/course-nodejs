@@ -1,14 +1,18 @@
 {
-  "name": "files",
+  "name": "filesn",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "preferGlobal": true,
+  "bin": {
+    "file-gen": "./index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "progress": "file:///C:\\Users\\Administrateur\\Desktop\\cours-node\\progress"
+    "progress": "file:../progress"
   }
 }

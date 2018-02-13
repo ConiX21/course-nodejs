@@ -4,7 +4,7 @@ module.exports = (function () {
     var cursor = ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'];
 
     function Progress() {
-
+        
     }
     
     Progress.prototype.setValue = function (value) {
