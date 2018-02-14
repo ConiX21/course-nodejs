@@ -1,34 +1,21 @@
-
 var Product = require('./models/product.model').Product;
 
 module.exports = (function () {
-    function RouteProduct(app, mongoose) {
+    function RouteProduct(app, connection) {
         this.routePath = '/api/product';
         this.app = app;
-        this.routesRegister();
-        this.database = null;
-        
-        mongoose.connect('mongodb://localhost:27017/products_db');
-        this.database = mongoose.connection;
-
-        this.database.on('error', console.error.bind(console, 'connection error:'));
-        this.database.once('open', function () {
-            console.log("database connected");
-        });
-      
+        this.routesRegister();     
+        this.database = connection;
     }
 
     RouteProduct.prototype.routesRegister = function () {
         this.app.get(`${this.routePath}`, function (req, res, next) {
-
-            Product.find().exec(function(err,data){
+            Product.find().exec(function(err, data){
                 if (err){
                     res.send(400, { "message": err });
                 }
-        
                 res.send(data);
             });
-
         });
 
         this.app.get(`${this.routePath}/:id`, function (req, res, next) {
@@ -44,11 +31,10 @@ module.exports = (function () {
 
         //POST : /api/product
         this.app.post(`${this.routePath}`, function (req, res, next) {
-
             var product = new Product(req.body);
             product.save(function(err){
                 if (err){
-                    res.send(400, { "message": err });
+                    res.send(400, { "messages": err.errors });
                 }
         
                 res.send(product);

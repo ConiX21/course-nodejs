@@ -6,7 +6,10 @@ var schemaProduct = new mongoose.Schema(
         description: 'string',
         reference: 'string',
         price: 'number'
-    },{versionKey: false }
+    },
+    {
+        versionKey: false 
+    }
 );
 
-    module.exports.Product = mongoose.model('Product', schemaProduct);
+module.exports.Product = mongoose.model('Product', schemaProduct);

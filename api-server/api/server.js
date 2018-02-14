@@ -1,13 +1,9 @@
 var express = require('express'),
     bodyParser = require('body-parser');
-    var MongoClient = require('mongodb').MongoClient;
 var fs = require('fs');
 var path = require('path');
 var app = express();
 var mongoose = require('mongoose');
-
-
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -19,9 +15,17 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 })
+ 
+mongoose.connect('mongodb://localhost:27017/products_db');
+mongoose.connection.on('error',function(err){
+    console.log("Error" + err)
+});
+mongoose.connection.once('open', function () {
+    console.log("database connected");
+});
 
 var RouteProduct =  require('./product.route');
-new RouteProduct(app, mongoose);
+new RouteProduct(app, mongoose.connection);
 
 app.get('/', function (req, res, next) {
     res.sendFile(`${path.dirname(__dirname)}\\client\\index.html`);
